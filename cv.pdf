@@ -1,0 +1,108 @@
+%PDF-1.4
+%����
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>
+endobj
+4 0 obj
+<< /Length 3555 >>
+stream
+BT
+/F1 10 Tf
+14 Tl
+50 780 Td
+/F2 16 Tf
+(KUMAR NALIN) Tj
+0 -20 Td
+/F1 9 Tf
+(New Delhi, India) Tj T*
+(+91 8178919116|nalinkt.23@gmail.com|www.linkedin.com/in/kumarnalin) Tj T*
+0 -14 Td
+/F2 11 Tf
+(EXPERIENCE) Tj
+0 -15 Td
+/F1 9 Tf
+(Software Development Intern | Lexly.ai \(Zangerrr.ai\) | Remote \(Astana, Kazakhstan\)) Tj T*
+(February 2025–August 2025) Tj T*
+(Developed and iterated on frontend prototypes using Next.js, React, and Tailwind CSS to) Tj T*
+(accelerate feature testing and UI/UX experimentation.) Tj T*
+(Collaborated with backend engineers to debug and resolve 30+ issues across FastAPI, MongoDB,) Tj T*
+(and PostgreSQL, improving product stability.) Tj T*
+(Built conversational AI chatbot prototypes integrated with the Gemini API, supporting) Tj T*
+(early-stage user testing and engagement analysis.) Tj T*
+/F2 11 Tf
+(EDUCATION) Tj
+0 -15 Td
+/F1 9 Tf
+(University School of Automation and Robotics \(USAR\), Guru Gobind Indraprastha University |) Tj T*
+(New Delhi, India) Tj T*
+(8.0 CGPA B. Tech in Artificial Intelligence and Data Science \(September 2023- August 2027\)) Tj T*
+/F2 11 Tf
+(PROJECTS) Tj
+0 -15 Td
+/F1 9 Tf
+(Notovo.in— AI-Powered Notes Platform) Tj T*
+(Built and deployed an AI-powered EdTech platform for automated note generation and contextual) Tj T*
+(document understanding; ranks first on Google Search for “Notovo”.) Tj T*
+(Engineered a LangGraph-based multi-agent pipeline with streaming AI responses, prompt) Tj T*
+(orchestration, chat history, and AI-assisted versioning.) Tj T*
+(Optimized frontend performance to 1.1s FCP and 48ms INP with secure temporary document) Tj T*
+(processing using Supabase.) Tj T*
+(Tech Stack: Next.js, Supabase, LangGraph, TypeScript, Vercel, Google OAuth) Tj T*
+(Code Sage — AI Codebase Audit System) Tj T*
+(Built an AI-powered static analysis system for onboarding, vulnerability detection, and) Tj T*
+(technical debt auditing across large repositories using LangGraph-based multi-agent workflows) Tj T*
+(and AST-driven repository indexing.) Tj T*
+(Eliminated hallucinated code references through a structural validation engine verifying LLM) Tj T*
+(outputs against real file coordinates with token-efficient deterministic chunk retrieval.) Tj T*
+(Tech Stack: Python, LangGraph, AST Parsing, Pydantic, Gemini API) Tj T*
+(Voyatri.in — Mood-Based Travel Discovery Platform) Tj T*
+(Built a full-stack travel discovery platform with personalized mood-based recommendations, a) Tj T*
+(TikTok-style vertical feed, and curated “Decks” for sharing itineraries.) Tj T*
+(Reduced image storage costs by 80%+ through browser-side compression and optimized tag-based) Tj T*
+(recommendation APIs to ~50ms latency.) Tj T*
+(Tech Stack: Next.js, React, Supabase, PostgreSQL, Tailwind CSS, Framer Motion, Vercel) Tj T*
+/F2 11 Tf
+(TECHNICAL SKILLS) Tj
+0 -15 Td
+/F1 9 Tf
+(AI & Machine Learning: Python, Natural Language Processing \(NLP\), LangChain, LangGraph,) Tj T*
+(Google ADK, Prompt engineering, session memory, prompt templating, dynamic context) Tj T*
+(Web Stack: HTML5, CSS3, JavaScript/TypeScript, React, Next.js, Tailwind CSS, SQL, PostgreSQL,) Tj T*
+(MongoDB, Redis, Node.js, Express.js, Django, REST APIs, GraphQL, Docker, AWS, CI/CD, Git) Tj T*
+/F2 11 Tf
+(POSITION OF RESPONSIBILITIES) Tj
+0 -15 Td
+/F1 9 Tf
+(ACTS USAR — Web Team LeadNov 2024 – Jan 2026) Tj T*
+(Mentored 20+ peers in web development and DevOps through workshops and hands-on technical) Tj T*
+(sessions.) Tj T*
+(Led technical operations and coordination for a college tech fest with 300+ participants.) Tj T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+6 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000121 00000 n 
+0000000257 00000 n 
+0000003864 00000 n 
+0000003934 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+4009
+%%EOF
