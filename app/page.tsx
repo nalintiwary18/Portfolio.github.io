@@ -161,7 +161,7 @@ export default function Page() {
                               Software Development Intern
                           </div>
                           <div className="text-[12.5px] font-medium text-[#FFE3A5]/80">
-                              Lexly.ai (Zangerrr.ai) · Remote
+                              Lexley.ai (Zangerrr.ai) · Remote
                           </div>
                           <ul className="text-[11.5px] font-light text-[#FFE3A5]/65 leading-[1.5] mt-1 list-disc pl-4 space-y-1">
                               <li>Developed and iterated AI-integrated frontend prototypes using Next.js, React, Tailwind, and Gemini API.</li>
