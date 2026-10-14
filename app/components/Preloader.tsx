@@ -245,6 +245,7 @@ export default function Preloader({ onComplete, mainViewportId = "main-viewport"
 
   const runPreloader = useCallback(() => {
     if (typeof window === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     clearAnimations();
     isRunningRef.current = true;
 
@@ -306,6 +307,7 @@ export default function Preloader({ onComplete, mainViewportId = "main-viewport"
   }, [clearAnimations, mainViewportId, playTick, startCurtainExit, updateSVG]);
 
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     runPreloader();
 
     const handleResize = () => {
@@ -317,7 +319,7 @@ export default function Preloader({ onComplete, mainViewportId = "main-viewport"
     };
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.ctrlKey || e.metaKey || e.altKey || e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement || (e.target instanceof HTMLElement && e.target.isContentEditable)) return;
       if (e.key === "r" || e.key === "R") {
         e.preventDefault();
         runPreloader();
@@ -338,15 +340,14 @@ export default function Preloader({ onComplete, mainViewportId = "main-viewport"
     <div
       ref={overlayRef}
       id="preloader-overlay"
-      aria-live="polite"
-      aria-label="Loading screen"
+      aria-hidden="true"
       style={{
         position: "fixed",
         inset: 0,
         width: "100vw",
         height: "100vh",
         zIndex: 9999,
-        display: "flex",
+        display: "none",
         alignItems: "center",
         justifyContent: "center",
         background: "transparent",
