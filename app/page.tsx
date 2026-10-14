@@ -1,28 +1,15 @@
 "use client"
-import { useEffect, useRef, useState } from "react";
-import { Mail, MapPin, Download, ArrowUpRight, Eye } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Mail, MapPin, ArrowUpRight, Eye } from "lucide-react";
 import React from "react";
 import Image from "next/image";
+import { ABOUT, EXPERIENCE, PROJECTS as projects, SKILLS as skills } from "./portfolio";
+import Preloader from "./components/Preloader";
 
 // ─── Color tokens (from Figma) ─────────────────────────────────────────────
 const NAVY = "#001D51";
 const CREAM = "#FFE3A5";
 const ON_BG = "#001d51";
-
-const skills = [
-    "LangGraph",
-    "RAG Systems",
-    "Next.js",
-    "AI Agents",
-    "LLMs",
-    "Supabase",
-    "FastAPI",
-    "PostgreSQL",
-    "MongoDB",
-    "Docker",
-    "Prompt engineering",
-    "prompt templating",
-];
 
 // ─── Social icons (inline SVG) ─────────────────────────────────────────────
 function Instagram({ size = 24 }: { size?: number }) {
@@ -59,40 +46,17 @@ function Github({ size = 24 }: { size?: number }) {
 }
 
 
-// ─── Skill tags for the Experience / Skills panel ──────────────────────────
-const SKILLS = [
-  "Python", "TypeScript", "Next.js", "React",
-  "LangGraph", "Supabase", "FastAPI", "PostgreSQL",
-  "MongoDB", "Docker", "Git", "Tailwind",
-];
-
-// ─── Project data ──────────────────────────────────────────────────────────
-const PROJECTS = [
-  {
-    title: "Notovo.in",
-    desc: "AI-Powered EdTech platform for automated notes with LangGraph multi-agent pipeline.",
-    tags: ["Next.js", "Supabase", "LangGraph"],
-    num: "01",
-  },
-  {
-    title: "Code Sage",
-    desc: "AI codebase auditor with AST-driven repository indexing and structural output validation.",
-    tags: ["Python", "LangGraph", "AST"],
-    num: "02",
-  },
-  {
-    title: "Voyatri.in",
-    desc: "Mood-based travel discovery platform with TikTok-style vertical feed and recommendations.",
-    tags: ["Next.js", "Framer Motion"],
-    num: "03",
-  },
-];
-
 // ─── Page component ────────────────────────────────────────────────────────
 export default function Page() {
   return (
-      <main className="min-h-dvh md:h-dvh w-full overflow-y-auto md:overflow-hidden" style={{ backgroundColor: CREAM ,margin: "0px"}}>
-          <div className="flex flex-col md:flex-row h-auto md:h-full w-full mx-auto gap-6 px-6 py-6 md:py-[clamp(20px,3.5vh,40px)]">
+    <>
+      <Preloader mainViewportId="main-viewport" />
+      <main
+        id="main-viewport"
+        className="min-h-dvh md:h-dvh w-full overflow-y-auto md:overflow-hidden will-change-transform"
+        style={{ backgroundColor: CREAM, margin: "0px" }}
+      >
+        <div className="flex flex-col md:flex-row h-auto md:h-full w-full mx-auto gap-6 px-6 py-6 md:py-[clamp(20px,3.5vh,40px)]">
               {/* Social rail */}
               <aside className="flex flex-row md:flex-col items-center justify-center md:justify-start gap-8 md:gap-6 pt-0 md:pt-4 pb-2 md:pb-0 w-full md:w-auto" style={{ color: NAVY }}>
                   <a href="https://www.linkedin.com/in/kumarnalin/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:scale-110 transition-transform"><Linkedin size={30}  /></a>
@@ -145,30 +109,7 @@ export default function Page() {
                       <ProjectCarousel />
                   </section>
 
-
-                  <section
-                      className="rounded-[28px] p-6 md:p-7 md:col-span-2 h-[320px] md:h-full md:min-h-0 md:row-span-1 overflow-hidden flex flex-col justify-between"
-                      style={{ backgroundColor: NAVY }}
-                  >
-                      <h3 className="text-[#ffe3a5] text-[24px]" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400 }}>
-                          EXPERIENCE
-                      </h3>
-                      <div className="flex flex-col gap-[6px] my-auto">
-                          <span className="inline-block text-[9px] font-bold tracking-[0.2em] uppercase text-[#001D51] bg-[#FFE3A5] px-[10px] py-1 rounded-[20px] w-fit">
-                              Feb 2025 – Aug 2025
-                          </span>
-                          <div className="text-[20px] leading-tight text-[#FFE3A5] font-semibold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
-                              Software Development Intern
-                          </div>
-                          <div className="text-[12.5px] font-medium text-[#FFE3A5]/80">
-                              Lexley.ai (Zangerrr.ai) · Remote
-                          </div>
-                          <ul className="text-[11.5px] font-light text-[#FFE3A5]/65 leading-[1.5] mt-1 list-disc pl-4 space-y-1">
-                              <li>Developed and iterated AI-integrated frontend prototypes using Next.js, React, Tailwind, and Gemini API.</li>
-                              <li>Collaborated with backend engineers to resolve 30+ issues across FastAPI, MongoDB, and PostgreSQL.</li>
-                          </ul>
-                      </div>
-                  </section>
+                  <ExperienceCard />
 
                   {/* About me */}
                   <section
@@ -183,7 +124,8 @@ export default function Page() {
                               className="mt-3 text-orange-200 text-xs font-normal font-['Montserrat'] max-w-[450px]"
                               style={{ color: CREAM }}
                           >
-                              B.Tech student in Artificial Intelligence and Data Science at USAR GGSIPU. Building products at the intersection of web engineering and multi-agent AI pipelines.
+                              <span className="md:hidden xl:inline">{ABOUT}</span>
+                              <span className="hidden md:inline xl:hidden">AI developer at NimitAI.</span>
                           </p>
                           <a
                               href="/newres.pdf"
@@ -216,16 +158,83 @@ export default function Page() {
               </div>
           </div>
       </main>
+    </>
   );
 }
 
-type Project = { tag: string; name: string; desc: string; short?: string };
+function ExperienceCard() {
+    const [cur, setCur] = useState(0);
+    const [hover, setHover] = useState(false);
+    const [focused, setFocused] = useState(false);
+    const [timerKey, setTimerKey] = useState(0);
 
-const projects: Project[] = [
-    { tag: "EdTech · AI", name: "Notovo.in", desc: "AI-Powered EdTech platform for automated notes with LangGraph multi-agent pipeline.", short: "LangGraph multi-agent notes pipeline" },
-    { tag: "Travel · Tech", name: "Voyatri.in", desc: "Smart travel companion that builds personalised itineraries in seconds.", short: "Personalised AI itineraries" },
-    { tag: "Dev Tool", name: "Code Sage", desc: "Intelligent code review assistant that understands context, not just syntax.", short: "Context-aware code review" },
-];
+    useEffect(() => {
+        if (hover || focused) return;
+        const timer = window.setInterval(() => {
+            setCur((c) => (c + 1) % EXPERIENCE.length);
+        }, 7000);
+        return () => window.clearInterval(timer);
+    }, [hover, focused, timerKey]);
+
+    const experience = EXPERIENCE[cur];
+
+    return (
+        <section
+            className="rounded-[28px] p-6 md:p-7 md:col-span-2 h-[320px] md:h-full md:min-h-0 md:row-span-1 overflow-hidden flex flex-col justify-between"
+            style={{ backgroundColor: NAVY }}
+            aria-label="Experience. Use the left and right arrow keys to browse work."
+            tabIndex={0}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            onFocus={() => setFocused(true)}
+            onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) setFocused(false);
+            }}
+            onKeyDown={(event) => {
+                if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+                event.preventDefault();
+                const direction = event.key === "ArrowRight" ? 1 : -1;
+                setCur((c) => (c + direction + EXPERIENCE.length) % EXPERIENCE.length);
+                setTimerKey((k) => k + 1);
+            }}
+        >
+            <h3 className="text-[#ffe3a5] text-[24px]" style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: 400 }}>
+                EXPERIENCE
+            </h3>
+            <div className="flex flex-col gap-[6px] my-auto">
+                <span className="inline-block text-[9px] font-bold tracking-[0.2em] uppercase text-[#001D51] bg-[#FFE3A5] px-[10px] py-1 rounded-[20px] w-fit">
+                    {experience.date}
+                </span>
+                <div className="text-[20px] leading-tight text-[#FFE3A5] font-semibold" style={{ fontFamily: "'Montserrat', sans-serif" }}>
+                    {experience.role}
+                </div>
+                <div className="text-[12.5px] font-medium text-[#FFE3A5]/80">
+                    {experience.company}
+                </div>
+                <ul className="text-[11.5px] font-light text-[#FFE3A5]/65 leading-[1.5] mt-1 list-disc pl-4 space-y-1">
+                    {experience.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+                </ul>
+            </div>
+            <div className="flex justify-center gap-2 shrink-0">
+                {EXPERIENCE.map((entry, i) => (
+                    <button
+                        key={`${entry.company}-${i}`}
+                        type="button"
+                        onClick={() => { setCur(i); setTimerKey((k) => k + 1); }}
+                        aria-label={`Go to experience ${i + 1}: ${entry.company}`}
+                        aria-pressed={i === cur}
+                        className="h-[7px] rounded-full bg-[#FFE3A5] transition-all duration-300"
+                        style={{
+                            width: i === cur ? 22 : 7,
+                            borderRadius: i === cur ? 4 : 999,
+                            opacity: i === cur ? 1 : 0.22,
+                        }}
+                    />
+                ))}
+            </div>
+        </section>
+    );
+}
 
 const DURATION = 2800;
 
@@ -233,20 +242,15 @@ function ProjectCarousel() {
     const [cur, setCur] = useState(0);
     const [hover, setHover] = useState(false);
     const [barKey, setBarKey] = useState(0);
-    const timerRef = useRef<number | null>(null);
 
     useEffect(() => {
-        if (hover) {
-            if (timerRef.current) window.clearInterval(timerRef.current);
-            return;
-        }
-        setBarKey((k) => k + 1);
-        timerRef.current = window.setInterval(() => {
+        if (hover) return;
+        const timer = window.setInterval(() => {
             setCur((c) => (c + 1) % projects.length);
             setBarKey((k) => k + 1);
         }, DURATION);
         return () => {
-            if (timerRef.current) window.clearInterval(timerRef.current);
+            window.clearInterval(timer);
         };
     }, [hover]);
 
@@ -261,7 +265,7 @@ function ProjectCarousel() {
         <div
             className="relative w-full h-full bg-[#001D51] rounded-[30px] overflow-hidden cursor-pointer"
             onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
+            onMouseLeave={() => { setHover(false); setBarKey((k) => k + 1); }}
         >
             <div className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#FFE3A5]/40 overflow-hidden z-10">
                 <div
@@ -319,25 +323,18 @@ function ProjectCarousel() {
                 className="absolute inset-[10px] grid grid-cols-2 grid-rows-2 gap-2 z-[5] transition-opacity duration-[380ms]"
                 style={{ opacity: hover ? 1 : 0, pointerEvents: hover ? "auto" : "none" }}
             >
-                <Tile big index="01" tag={projects[0].tag} name={projects[0].name} desc={projects[0].short} />
-                <Tile index="02" tag={projects[1].tag} name={projects[1].name} />
-                <Tile index="03" tag={projects[2].tag} name={projects[2].name} />
+                <Tile big index="01" tag={projects[0].tag} name={projects[0].name} desc={projects[0].short} href={projects[0].href} />
+                <Tile index="02" tag={projects[1].tag} name={projects[1].name} href={projects[1].href} />
+                <Tile index="03" tag={projects[2].tag} name={projects[2].name} href={projects[2].href} />
             </div>
         </div>
     );
 }
 
-const PROJECT_LINKS: Record<string, string> = {
-    "Notovo.in": "https://notovo.in",
-    "Code Sage": "https://code-sage.dev",
-    "Voyatri.in": "https://voyatri.in",
-};
-
-function Tile({ big, index, tag, name, desc }: { big?: boolean; index: string; tag: string; name: string; desc?: string }) {
-    const url = PROJECT_LINKS[name] || "#";
+function Tile({ big, index, tag, name, desc, href }: { big?: boolean; index: string; tag: string; name: string; desc?: string; href: string }) {
     return (
         <a
-            href={url}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
             onClick={(e) => { e.stopPropagation(); }}

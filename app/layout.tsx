@@ -5,7 +5,7 @@ import "./globals.css";
 export const metadata: Metadata = {
     title: "Kumar Nalin | Portfolio",
     description:
-    "B.Tech student in Artificial Intelligence & Data Science at USAR GGSIPU. Building products at the intersection of web engineering and multi-agent AI pipelines.",
+    "Kumar Nalin, software developer focused on AI products, full-stack engineering, and LLM systems. Experience at NimitAI and Lexley.ai; creator of Notovo, Code Sage, and Voyatri.",
     icons: {
         icon: [
             { url: "/favicon/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -31,7 +31,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nothing+You+Could+Do&family=Pacifico&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
           rel="stylesheet"
         />
       </head>
